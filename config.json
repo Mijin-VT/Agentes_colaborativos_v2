@@ -1,0 +1,39 @@
+{
+    "lm_studio_url": "http://localhost:1234/v1",
+    "workspace": "~/agentes_workspace",
+    "max_tokens": 4096,
+    "max_context_tokens": 3500,
+    "temperature": 0.7,
+    "modelos": {
+        "coordinador": {
+            "nombre": "p-e-w_qwen3-4b-instruct-2507-heretic",
+            "descripcion": "Qwen3 4B - Coordina, resume y decide",
+            "temperatura": 0.3
+        },
+        "analista": {
+            "nombre": "p-e-w_gpt-oss-20b-heretic",
+            "descripcion": "GPT Oss 20B - Análisis profundo y planificación",
+            "temperatura": 0.7
+        },
+        "desarrollador": {
+            "nombre": "huihui-qwen3-coder-30b-a3b-instruct-abliterated-i1",
+            "descripcion": "Qwen3 Coder 30B - Especialista en código",
+            "temperatura": 0.5
+        }
+    },
+    "rutas_prohibidas": [
+        "C:\\Windows",
+        "C:\\Program Files",
+        "C:\\Program Files (x86)",
+        "/usr", "/bin", "/etc", "/boot", "/sys",
+        "~/AppData",
+        "~/.config"
+    ],
+    "comandos_prohibidos": [
+        "format", "del /s", "rm -rf /", "rm -rf ~", "rmdir /s",
+        "shutdown", "reboot", "mkfs", "dd if=", "reg delete",
+        ":(){:|:&};:", "fork bomb", "taskkill /f /im explorer",
+        "net user", "net localgroup", "icacls",
+        "powershell -enc", "base64 -d"
+    ]
+}

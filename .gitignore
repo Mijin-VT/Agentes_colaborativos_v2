@@ -1,0 +1,66 @@
+# ============================================================
+# .gitignore - Sistema de Agentes Colaborativos v2.1
+# ============================================================
+
+# Logs de sesiones
+agentes_workspace/.logs/
+*.log
+
+# Backups automáticos
+agentes_workspace/.backups/
+*.bak
+
+# Archivos generados por el instalador
+instalacion.log
+AgentesColaborativos/
+
+# Workspace de agentes (proyectos creados por los agentes)
+agentes_workspace/*.py
+agentes_workspace/*.txt
+agentes_workspace/*.md
+agentes_workspace/*.json
+agentes_workspace/*.html
+agentes_workspace/*.css
+agentes_workspace/*.js
+agentes_workspace/*.csv
+agentes_workspace/*.xml
+agentes_workspace/*.yaml
+agentes_workspace/*.yml
+
+# Entornos virtuales de Python
+venv/
+env/
+.venv/
+.env/
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporales
+*.tmp
+*.temp
+~$*
+
+# Config local (si contiene datos sensibles)
+# config.local.json
+
+# Descargas de modelos (si se usan)
+models/
+*.gguf
+*.bin
+*.safetensors
