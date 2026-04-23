@@ -188,6 +188,60 @@ EJECUTAR_AGENTES.bat
 | 🔍 Analista | GPT-OSS 20B Heretic | ~22 GB | Razona, planifica, analiza | 0.7 |
 | 💻 Desarrollador | Qwen3 Coder 30B A3B | ~15 GB | Escribe código, ejecuta scripts | 0.5 |
 
+## Propuesta de niveles más ligeros
+
+Como los agentes trabajan **secuencialmente** (solo uno activo a la vez), activando **JIT (Just-in-Time Model Loading)** en LM Studio solo necesitas espacio para el modelo más grande del trío. Eso abre dos tiers mucho más accesibles:
+
+### 🟢 Tier "Mínimo real" (PC modesta, GPU opcional)
+
+| Agente | Modelo | Cuantización | Tamaño |
+|--------|--------|--------------|--------|
+| **Coordinador** | `Qwen2.5-3B-Instruct` | Q4_K_M | ~2 GB |
+| **Analista** | `Qwen2.5-7B-Instruct` | Q4_K_M | ~4.5 GB |
+| **Desarrollador** | `Qwen2.5-Coder-7B-Instruct` | Q4_K_M | ~4.5 GB |
+
+**Requisitos:**
+- **GPU:** 6 GB VRAM (o CPU puro funciona, más lento)
+- **RAM:** 16 GB
+- **Disco:** ~12 GB
+
+---
+
+### 🟡 Tier "Ultraligero" (laptop vieja, sin GPU)
+
+| Agente | Modelo | Cuantización | Tamaño |
+|--------|--------|--------------|--------|
+| **Coordinador** | `Llama-3.2-3B-Instruct` o `Qwen2.5-1.5B` | Q4 | ~1-2 GB |
+| **Analista** | `Llama-3.2-3B-Instruct` o `Qwen2.5-1.5B` | Q4 | ~1-2 GB |
+| **Desarrollador** | `Qwen2.5-Coder-1.5B` | Q4 | ~1 GB |
+
+**Requisitos:**
+- **GPU:** no requerida
+- **RAM:** 8 GB
+- **Disco:** ~5 GB
+
+> ⚠️ **Nota:** Pierdes calidad de razonamiento frente al 20B, pero para tareas cortas y generación de código simple funciona bien. Lo importante: **arranca en hardware normal**.
+
+---
+
+## Ajustes complementarios en el código
+
+En `config.json` hay dos parámetros que también ayudan en equipos limitados:
+
+| Parámetro | Valor actual | Valor sugerido | Efecto |
+|-----------|--------------|----------------|--------|
+| `max_tokens` | `4096` | `2048` | Reduce picos de RAM durante la generación |
+| `max_context_tokens` | `3500` | `2000` | Ayuda a modelos pequeños, que suelen degradar con contextos largos |
+
+**Ejemplo de `config.json` ajustado:**
+
+```json
+{
+  "max_tokens": 2048,
+  "max_context_tokens": 2000
+}
+```
+
 ### Si algo falla
 
 Consulta la sección de solución de problemas en [`DOCUMENTACION.md`](DOCUMENTACION.md#12-solución-de-problemas)
