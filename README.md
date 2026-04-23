@@ -172,12 +172,13 @@ EJECUTAR_AGENTES.bat
 
 ### Requisitos del sistema
 
-| Componente | Mínimo | Recomendado |
-|------------|--------|-------------|
-| **GPU** | NVIDIA 12 GB VRAM | NVIDIA RTX 4080 Super (16 GB) |
-| **RAM** | 32 GB | 48 GB |
-| **Disco** | ~50 GB libres | SSD NVMe |
-| **SO** | Windows 10/11, Linux, macOS | Windows 11, Ubuntu 22.04+, macOS 13+ |
+| Componente | Mínimo | Recomendado | Óptimo (actual) |
+|------------|--------|-------------|-----------------|
+| **GPU** | Ninguna / 4 GB VRAM | NVIDIA 8 GB VRAM | NVIDIA RTX 4080 Super (16 GB) |
+| **RAM** | 8 GB | 16 GB | 32-48 GB |
+| **Disco** | ~5 GB libres | ~15 GB libres | ~50 GB en SSD NVMe |
+| **SO** | Windows 10/11, Linux, macOS | Windows 11, Ubuntu 22.04+, macOS 13+ | Windows 11, Ubuntu 22.04+, macOS 13+ |
+| **Modelos** | 1.5B - 3B (Q4) | 7B (Q4) | 20B - 30B |
 
 ### Modelos de IA
 
